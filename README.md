@@ -7,7 +7,7 @@ Este repositorio contiene la solución para el examen de la segunda unidad del c
 | **Curso** | Patrones de Software |
 | **Universidad** | Universidad Privada de Tacna (UPT) |
 | **Facultad** | FAING - EPIS |
-| **Estudiante** | J0rgZ (Tu Nombre Completo) |
+| **Estudiante** | Jorge Luis Briceño Diaz|
 | **Tecnología** | .NET 9, C#, xUnit |
 
 ---
@@ -15,7 +15,6 @@ Este repositorio contiene la solución para el examen de la segunda unidad del c
 ## 🚀 Resultados de la Automatización
 
 *   **📘 Documentación Publicada:** [**Ver Documentación en GitHub Pages**](https://upt-faing-epis.github.io/examen-si889-2025-ii-u2-J0rgZ/)
-*   **📦 Releases Automáticos:** [**Ver Releases del Proyecto**](https://github.com/UPT-FAING-EPIS/examen-si889-2025-ii-u2-J0rgZ/releases)
 *   **⚙️ Ejecución de Workflows:** [**Ver Historial de Actions**](https://github.com/UPT-FAING-EPIS/examen-si889-2025-ii-u2-J0rgZ/actions)
 
 ---
