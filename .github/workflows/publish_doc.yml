@@ -8,6 +8,11 @@ on:
 
 jobs:
   generate-publish-docs:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -20,15 +25,8 @@ jobs:
 
       - name: Create Documentation with Absolute Image Path
         run: |
-          # 1. Creamos la estructura de carpetas
           mkdir -p docs/images
-
-          # 2. Creamos el SVG y lo guardamos en la carpeta de imágenes
           echo "<svg width='200' height='100'><rect width='200' height='100' style='fill:rgb(200,200,255);stroke-width:3;stroke:rgb(0,0,0)' /><text x='50' y='50' fill='black'>OrderFacade</text></svg>" > docs/images/diagram.svg
-
-          # 3. Creamos el HTML. La clave está en la ruta del 'src' de la imagen:
-          # Usamos /${{ github.event.repository.name }}/ para crear una ruta absoluta
-          # que siempre funcionará en GitHub Pages.
           echo "<html><head><title>Documentación</title></head><body><h1>Mi Documentación</h1><p>Esta es una página de documentación autogenerada.</p><p>Diagrama de clases (placeholder):</p><img src='/${{ github.event.repository.name }}/images/diagram.svg' alt='Diagrama de Clases'></body></html>" > docs/index.html
       
       - name: Upload artifact
