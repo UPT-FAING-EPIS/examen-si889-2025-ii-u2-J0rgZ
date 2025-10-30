@@ -1,0 +1,31 @@
+name: Publish Documentation
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  generate-publish-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET 9
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Create Dummy Documentation
+        run: |
+          mkdir -p docs
+          echo "<html><head><title>Documentación</title></head><body><h1>Mi Documentación</h1><p>Esta es una página de documentación autogenerada.</p><p>Diagrama de clases (placeholder):</p><img src='diagram.svg'></body></html>" > docs/index.html
+          echo "<svg width='200' height='100'><rect width='200' height='100' style='fill:rgb(200,200,255);stroke-width:3;stroke:rgb(0,0,0)' /><text x='50' y='50' fill='black'>OrderFacade</text></svg>" > docs/diagram.svg
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
