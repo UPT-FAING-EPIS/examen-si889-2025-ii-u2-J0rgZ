@@ -18,11 +18,16 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
-      - name: Create Dummy Documentation
+      - name: Create Dummy Documentation and Diagram
         run: |
-          mkdir -p docs
-          echo "<html><head><title>Documentación</title></head><body><h1>Mi Documentación</h1><p>Esta es una página de documentación autogenerada.</p><p>Diagrama de clases (placeholder):</p><img src='diagram.svg'></body></html>" > docs/index.html
-          echo "<svg width='200' height='100'><rect width='200' height='100' style='fill:rgb(200,200,255);stroke-width:3;stroke:rgb(0,0,0)' /><text x='50' y='50' fill='black'>OrderFacade</text></svg>" > docs/diagram.svg
+          # 1. Creamos la carpeta principal 'docs' y una subcarpeta 'images'
+          mkdir -p docs/images
+
+          # 2. Creamos el archivo HTML, pero ahora la imagen apunta a la carpeta 'images'
+          echo "<html><head><title>Documentación</title></head><body><h1>Mi Documentación</h1><p>Esta es una página de documentación autogenerada.</p><p>Diagrama de clases (placeholder):</p><img src='images/diagram.svg' alt='Diagrama de Clases'></body></html>" > docs/index.html
+
+          # 3. Creamos el archivo SVG y lo guardamos directamente dentro de la carpeta 'images'
+          echo "<svg width='200' height='100'><rect width='200' height='100' style='fill:rgb(200,200,255);stroke-width:3;stroke:rgb(0,0,0)' /><text x='50' y='50' fill='black'>OrderFacade</text></svg>" > docs/images/diagram.svg
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
